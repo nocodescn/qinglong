@@ -72,10 +72,10 @@ COPY --from=builder /tmp/build/node_modules/. /ql/node_modules/
 
 WORKDIR ${QL_DIR}
 ENV \
-    PORT=8080 \
+    PORT=5700 \
     HOST=0.0.0.0
-EXPOSE 5400
+EXPOSE 5700
 HEALTHCHECK --interval=5s --timeout=2s --retries=20 \
-  CMD curl -sf http://0.0.0.0:5400/api/health || exit 1
+  CMD curl -sf http://0.0.0.0:5700/api/health || exit 1
 
 ENTRYPOINT ["./docker/docker-entrypoint.sh"]
