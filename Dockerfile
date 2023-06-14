@@ -71,7 +71,7 @@ RUN git clone --depth=1 -b ${QL_BRANCH} ${QL_URL} ${QL_DIR} \
 COPY --from=builder /tmp/build/node_modules/. /ql/node_modules/
 
 WORKDIR ${QL_DIR}
-
+EXPOSE 5400
 HEALTHCHECK --interval=5s --timeout=2s --retries=20 \
   CMD curl -sf http://127.0.0.1:5400/api/health || exit 1
 
